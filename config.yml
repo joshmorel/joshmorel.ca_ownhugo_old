@@ -1,0 +1,38 @@
+# General config
+baseURL: "https://hugo.joshmorel.ca/"
+languageCode: "en-us"
+title: "Josh Morel"
+metaDataFormat: "yaml"
+theme: "hugo-sustain"
+
+# Theme config
+
+# for syntax highlighting - include `highlight.js` and css files
+highlight: true
+
+params:
+  avatar: "profile.png"
+  author: "Josh Morel"
+  description: "All about me"
+  social:
+    Github: "joshmorel"
+    Email: "morel.josh@hotmail.com"
+    Twitter: "username"
+    LinkedIn: "username"
+    Stackoverflow: "username"
+
+## Main Menu
+menu:
+  main:
+  - name: "blog"
+    weight: 100
+    identifier: "blog"
+    url: "/blog/"
+  - name: "projects"
+    identifier: "projects"
+    weight: 200
+    url: "/projects/"
+  - name: "about"
+    identifier: "about"
+    weight: 300
+    url: "/about/"
