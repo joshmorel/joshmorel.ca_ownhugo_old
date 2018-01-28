@@ -46,10 +46,12 @@ considered and also tried.
 I'll also note that none of these options work on Windows - only OS X &
 Linux - so if you're working on Windows you may consider
 [nvm-windows](https://github.com/coreybutler/nvm-windows) or
-[nodist](https://github.com/marcelklehr/nodist). nodenv _might_ work
+[nodist](https://github.com/marcelklehr/nodist). `nodenv` _might_ work
 with MinGW/Cygwin.
 
 ### Ubuntu 16.04 - Default apt-based install
+
+**Important**: The next two commands are for demonstration only. You do not need to do them.
 
 To install Node.js from the main Xenial repository at the system level
 you can either run apt install nodejs or apt install npm.
@@ -59,13 +61,13 @@ Node.js ecosystem more generally. However, we'll get the later version
 of npm with nodenv later so let's just install Node.js to keep things
 tidy.
 
-```{.sourceCode .console}
-$ sudo apt install nodejs
+```shell
+sudo apt install nodejs
 ```
 
 You can confirm that Node.js was installed:
 
-```{.sourceCode .console}
+```shell
 $ nodejs -v
 v4.2.6
 ```
@@ -91,27 +93,26 @@ required lines to your .profile.
 If you are using CentOS/REHL or Mac then you'll need to edit your
 .bash_profile instead.
 
-```{.sourceCode .console}
-$ git clone https://github.com/nodenv/nodenv.git ~/.nodenv
-$ echo 'export PATH="$HOME/.nodenv/bin:$PATH"' >> ~/.profile
-$ echo 'eval "$(nodenv init -)"' >> ~/.profile
+```shell
+git clone https://github.com/nodenv/nodenv.git ~/.nodenv
+echo 'export PATH="$HOME/.nodenv/bin:$PATH"' >> ~/.profile
+echo 'eval "$(nodenv init -)"' >> ~/.profile
 ```
 
 Log out then log back in to confirm the install:
 
-```{.sourceCode .console}
+```shell
 $ type nodenv
 nodenv is a function
 nodenv ()
 ...
 ```
 
-As mentioned earlier nodenv is modular so a plugin is required to build
-node versions. We can install
+As mentioned earlier nodenv is modular with plugins performing some of the essentials functions, including the actual building of node versions. We can install
 [node-build](https://github.com/nodenv/node-build#readme) and then list
 available versions.
 
-```{.sourceCode .console}
+```shell
 $ git clone https://github.com/nodenv/node-build.git $(nodenv root)/plugins/node-build
 $ nodenv install -l
 0.1.14
@@ -125,14 +126,14 @@ Now that we have nodenv and the node-build plugin, we can install
 multiple Node.js versions. Let's install the latest LTS version (at time
 of this writing) and then activate it globally (for the logged in user).
 
-```{.sourceCode .console}
-$ nodenv install 6.8.0
-$ nodenv global 6.8.0
+```shell
+nodenv install 6.8.0
+nodenv global 6.8.0
 ```
 
 You can confirm node & npm are installed:
 
-```{.sourceCode .console}
+```shell
 $ npm version
 { npm: '3.10.10',
   ares: '1.10.1-DEV',
@@ -149,17 +150,19 @@ $ npm version
 To install a global node module we do so as per usual, but we need to
 rehash to make it available from the command-line.
 
-```{.sourceCode .console}
+```shell
 $ npm install -g mocha
+$ mocha -V #without rehash
+mocha: command not found
 $ nodenv rehash
-$ mocha version
+$ mocha -V
 3.2.0
 ```
 
 We can install the nodenv-package-rehash plugin to enable auotmatic
 rehashing.
 
-```{.sourceCode .console}
+```shell
 $ git clone https://github.com/nodenv/nodenv-package-rehash "$(nodenv root)"/plugins/nodenv-package-rehash.git
 $ nodenv package-hooks install --all
 $ npm install -g nodemon
@@ -172,29 +175,31 @@ $ nodemon -v
 To start to see the power in nodenv let's install a project locally for
 a specific project.
 
-```{.sourceCode .console}
+```shell
 $ nodenv install 4.8.0
 $ mkdir path/to/projects/hello-nodenv
 $ cd path/to/projects/hello-nodenv
+$ node -v #displaying global
+v6.8.0
 $ nodenv local 4.8.0
 $ node -v
 v4.8.0
 ```
 
-This will write "4.8.0" to a .node-version file. When you cd into this
+This will write `4.8.0` to a .node-version file. When you cd into this
 directory nodenv will adjust the version shim (for details on how this
-works see the README).
+works see the `README`).
 
 Now all our npm scripts will work with the local version instead of the
 global version.
 
 We can see how this works by:
 
-1. Create a new project with npm init
-2. In package.json add "start": "node index.js" within "scripts"\`
+1. Create a new project with `npm init`
+2. In package.json add `"start": "node index.js"` within `scripts`
 3. Then create a simple program and run it
 
-```{.sourceCode .console}
+```shell
 $ echo 'console.log("Hello from " + process.version);' > index.js
 $ npm start
 ...

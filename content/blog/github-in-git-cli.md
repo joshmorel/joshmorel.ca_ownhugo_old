@@ -39,8 +39,7 @@ I'll provide instructions specific for Ubuntu (tested on 16.04 and
 17.10) but you should be able to follow along with modifications for
 most OSes.
 
-First download the latest of either version 2.3.0 or the [latest stable
-binary for Linux](https://github.com/github/hub/releases/latest). In
+First download the latest of either version 2.3.0 or the [latest stable binary for Linux](https://github.com/github/hub/releases/latest). In
 this tutorial, I'll be using version 2.3.0 for some newer features
 (assigning issues to a user). At this moment it's not stable (v2.2.9 is)
 but should be soon.
@@ -48,14 +47,14 @@ but should be soon.
 To install we'll untar and run the `install` script, which creates the
 program in `/usr/local/bin` and a manpage.
 
-```{.sourceCode .console}
+```shell
 tar zxvf hub-linux-ARCH-X.Y.Z.tgz
 sudo hub-linux-ARCH-X.Y.Z/install
 ```
 
 You can confirm the install (your versions will likely be different):
 
-```{.sourceCode .console}
+```shell
 $ hub version
 git version 2.11.0
 hub version 2.3.0-pre10
@@ -72,13 +71,13 @@ functionality. But two options to consider for a better experience are:
 For auto-completion, first we need to put the `etc/hub.bash_completion`
 file included in the release somewhere permanent.
 
-```{.sourceCode .console}
+```shell
 sudo cp etc/hub.bash_completion.sh /usr/local/etc
 ```
 
 Now, for Ubuntu, we'll add the following lines to `~/.bashrc`.
 
-```{.sourceCode .console}
+```bash
 # Alias hub with git
 eval "$(hub alias -s)"
 
@@ -91,7 +90,7 @@ fi
 To see the effects, open a new terminal or run `source ~/.bashrc`, then
 confirm success with:
 
-```{.sourceCode .console}
+```shell
 $ git version
 git version 2.11.0
 hub version 2.3.0-pre10
@@ -106,7 +105,7 @@ To use hub we need to authenticate with GitHub. This is done by
 providing your login credentials.
 
 `hub` will store your username and an oauth token in a `~/.config/hub`.
-You can delete the token anytime in <https://github.com/settings/tokens>
+You can delete the token anytime in https://github.com/settings/tokens
 to revoke access.
 
 ### Logging in and Brand New Repository
@@ -123,7 +122,7 @@ creating new ones:
 
 Let's try these both with our throwaway "hubapp":
 
-```{.sourceCode .console}
+```shell
 git init -g hubapp # you'll be asked for your credentials if you're first time
 cd hubapp
 echo "# My New Hub App" > README.md #optional but let's put something in there
@@ -149,7 +148,7 @@ command instead of:
 Let's say you're in an existing app with some killer potential called
 "theNextFacebook" and want to start some GitHub collaboration.
 
-```{.sourceCode .console}
+```shell
 git create # remote added and repo created on GitHub under your user's namespace
 git push -u origin master # that's it!
 git browse # optionally, open in your browser
@@ -161,11 +160,9 @@ permissions in the organization).
 
 ## GitHub Flow with git+hub
 
-In this final part we'll see that we can complete [GitHub
-Flow](https://guides.github.com/introduction/flow/) from the CLI with
+In this final part we'll see that we can complete [GitHub Flow](https://guides.github.com/introduction/flow/) from the CLI with
 `git`+`hub` commands. Let's pretend we're working on a small project
-with a few contributors using the [Shared Repository
-Model](https://help.github.com/articles/about-collaborative-development-models/).
+with a few contributors using the [Shared Repository Model](https://help.github.com/articles/about-collaborative-development-models/).
 
 1. Create and assign an issue
 2. Create and work on a topic branch
@@ -175,17 +172,16 @@ Model](https://help.github.com/articles/about-collaborative-development-models/)
 
 ### Create an issue
 
-First we'll **create an issue** and assign ourselves (substitute with
-your GitHub username).
+First we'll **create an issue** and assign ourselves:
 
-```{.sourceCode .console}
-git issue create -a USER
+```shell
+git issue create -a mygithubusername
 ```
 
 Your default text editor will open. The first line will be the title
 while the rest will be the description. For example:
 
-```{.sourceCode .console}
+```
 Add fetch user action
 
 To be called by multiple components for a customized interface
@@ -200,14 +196,14 @@ Next, we'll **create a branch both locally and on GitHub**. The second
 part is optional at this moment, but provides visibility to peers on
 what's being worked on.
 
-```{.sourceCode .console}
+```shell
 git checkout -b fetch-user-action
 git push -u origin !$ # note: !$ is a bash shortcut for last word of last command
 ```
 
 ...we develop, test and commit changes locally...
 
-Great. Now, everything is working nicely, so let's do a `pull-request`,
+Great. Now, everything is working nicely, so let's do a **pull request**,
 but let's pretend two things have happened:
 
 * we have multiple commits in this topic branch, including typo fixes
@@ -222,7 +218,7 @@ how do we achieve this?
 First let's squash our multiple commits into one. For simplicity's sake
 let's say we only have two our topic branch:
 
-```{.sourceCode .console}
+```shell
 $ git log --oneline
 513568e Fix typo... oops
 5dda11f Finished fetch user
@@ -231,13 +227,13 @@ $ git log --oneline
 
 We'll run an interactive `rebase`.
 
-```{.sourceCode .console}
+```shell
 git rebase -i HEAD~2
 ```
 
 Git will show you this in your text editor:
 
-```{.sourceCode .console}
+```
 pick 5dda11f Finished fetch user
 pick 513568e Fix typo... oops
 
@@ -251,7 +247,7 @@ commit. If we used "squash" instead we'd have an opportunity to rewrite
 the entire commit message (an unncessary step in this specific
 scenario).
 
-```{.sourceCode .console}
+```
 pick 5dda11f Finished fetch user
 fixup 513568e Fix typo... oops
 ```
@@ -264,7 +260,7 @@ rebase here to apply our commit on top of any interim changes made to
 master by our buddy. This way we can avoid the noisy and unnecessary
 "merge commit".
 
-```{.sourceCode .console}
+```shell
 git sync # use the new sync command to tersely update master locally
 git diff master # check to see if there are may be any conflicts warranting a different approach
 git rebase master # rebase your branch commit on top of master
@@ -272,7 +268,7 @@ git rebase master # rebase your branch commit on top of master
 
 If there were no unresolvable conflicts, you'll get this message:
 
-```{.sourceCode .console}
+```
 First, rewinding head to replay your work on top of it...
 Applying: Finished fetch user
 ```
@@ -282,10 +278,8 @@ will help you a lot here) then use `rebase --continue`. I'm not going to
 go into detail on this here, so instead I'll suggest some resources:
 
 * For more on **the why and how of rebasing** the topic branch check
-  out [this
-  article](https://nathanleclaire.com/blog/2014/09/14/dont-be-scared-of-git-rebase/).
-* Some additional instructions on resolving conflicts and [rebase
-  --continue](http://gitforteams.com/resources/rebasing.html).
+  out [this article](https://nathanleclaire.com/blog/2014/09/14/dont-be-scared-of-git-rebase/).
+* Some additional instructions on resolving conflicts and [rebase --continue](http://gitforteams.com/resources/rebasing.html).
 
 ### Create Pull Request
 
@@ -294,18 +288,18 @@ assign ourselves, but you can also ask for "reviewers" to check the
 quality of the work with the `-r` flag. As we'll likely be practising
 this flow alone the first few times let's skip the reviewers part.
 
-```{.sourceCode .console}
+```shell
 git push #this pushes to topic branch remotely
-git pull-request -a USER
+git pull-request -a reviewersusername
 ```
 
 Similar to the issue, you will now write your PR message. **Make sure
 the body includes a reference to the original issue**, so it will be
-closed automatically, for example put "**Closes \#NUM**" in the body
+closed automatically, for example put "**Closes #11**" in the body
 where NUM is substituted with number of the issue. To get the issue
 number run `git issue`.
 
-```{.sourceCode .console}
+```
 Add fetch user action
 
 Closes #1
@@ -316,7 +310,7 @@ Closes #1
 Now let's finally merge the topic branch and push, closing the pull
 request and issue at the same time.
 
-```{.sourceCode .console}
+```shell
 git checkout master
 git merge fetch-user-actions
 git push
@@ -328,7 +322,7 @@ you would run `git sync` to ensure master is up-to-date locally, then
 
 If you're happy to delete the topic branch now, just run:
 
-```{.sourceCode .console}
+```shell
 git branch -d fetch-user-actions
 git push origin --delete !$
 ```

@@ -3,17 +3,33 @@ baseURL: "https://hugo.joshmorel.ca/"
 languageCode: "en-us"
 title: "Josh Morel"
 metaDataFormat: "yaml"
-theme: "hugo-sustain"
+theme: "minimal"
 
 # Theme config
 
 # for syntax highlighting - include `highlight.js` and css files
 highlight: true
+highlightStyle: "solarized-dark"
+highlightLanguages: ["go", "bash", "python", "vim"]
 
 params:
-  avatar: "profile.png"
   author: "Josh Morel"
-  description: "All about me"
+  description: |
+    This site is all about sharing a bit of my knowledge with the world and, more importantly, my future self.
+    By the world I really mean web and open source software enthusiasts 
+    because you won't find anything here on how to boil an egg, pick up a date or deworm a cat (subject to change). 
+    
+    Topics of interest include web development, system administration, DevOps, 
+    GNU/Linux, Go, Python and Vim among other things. 
+    
+    Currently, the format is a series of how-to walkthrough articles. 
+    I'm just about to start to figure out if and how I should share collections of code/shell snippets.
+
+  githubUsername: "joshmorel"
+  accent: blue
+  backgroundColor: white
+  font: Raleway #from Google Fonts
+  highlight: true
   social:
     Github: "joshmorel"
     Email: "morel.josh@hotmail.com"
@@ -24,15 +40,34 @@ params:
 ## Main Menu
 menu:
   main:
-  - name: "blog"
-    weight: 100
-    identifier: "blog"
+  - name: "Home"
+    weight: 1
+    url: "/"
+  - name: "Blog"
+    weight: 2
     url: "/blog/"
-  - name: "projects"
-    identifier: "projects"
-    weight: 200
+  - name: "Projects"
+    weight: 3
     url: "/projects/"
-  - name: "about"
-    identifier: "about"
-    weight: 300
+  - name: "About"
+    weight: 4
     url: "/about/"
+  icon:
+  - url: "mailto:me@example.com"
+    name: "envelope-o"
+    weight: 1
+  - url: "https://github.com/username/"
+    name: "github"
+    weight: 2
+  - url: "https://stackoverflow.com/users/4582054/josh-morel`"
+    name: "stack-overflow"
+    weight: 5
+  - url: "https://twitter.com/kitchener25"
+    name: "twitter"
+    weight: 3
+  - url: "https://www.linkedin.com/in/josh-morel-94373221/"
+    name: "linkedin"
+    weight: 4
+  - url: "https://codepen.io/joshmorel/"
+    name: "codepen"
+    weight: 5

@@ -18,8 +18,7 @@ will host that static site for you for free. These two combined allow
 someone to create and present a beautiful site without needing to know
 much HTML, CSS, or JavaScript or require a paid or local web server.
 
-Additionally, you can avoid [vendor
-lock-in](https://en.wikipedia.org/wiki/Vendor_lock-in) associated with
+Additionally, you can avoid [vendor lock-in](https://en.wikipedia.org/wiki/Vendor_lock-in) associated with
 using something like Wordpress as all your content will be in simple
 marked up text files maintained both locally and on GitHub.
 
@@ -44,13 +43,13 @@ distribution.
 
 On Ubuntu try:
 
-```{.sourceCode .console}
+```shell
 sudo apt-get install python-pelican
 ```
 
 With pip (in Windows, for example):
 
-```{.sourceCode .console}
+```shell
 pip install pelican
 ```
 
@@ -61,13 +60,13 @@ have challenges head there.
 ## GitHub Pages init
 
 To create a GitHub pages site you need to at least create a new
-repository named _you.github.io_ (where _you_ is substituted by your
+repository named `you.github.io` (where `you` is substituted by your
 GitHub user name). To support the Pelican project workflow we will
 create two:
 
-1. **you.github.io-src** will contain the Pelican project used to
+1. `you.github.io-src` will contain the Pelican project used to
    generate the static website
-2. **you.github.io** will contain the website itself output from a
+2. `you.github.io` will contain the website itself output from a
    Pelican project
 
 [Create](https://github.com/new) these repositories on GitHub, being
@@ -75,7 +74,7 @@ sure to initialize with a README to facilitate cloning locally.
 
 Clone the source repo into a ghpages directory.
 
-```{.sourceCode .console}
+```shell
 git clone https://www.github.com/you/you.github.io-src ghpages; cd ghpages
 ```
 
@@ -83,7 +82,7 @@ Add the website repository as a [git
 submodule](https://git-scm.com/book/en/v2/Git-Tools-Submodules) in the
 project's output directory.
 
-```{.sourceCode .console}
+```shell
 git submodule add https://www.github.com/you/you.github.io output
 ```
 
@@ -91,7 +90,7 @@ git submodule add https://www.github.com/you/you.github.io output
 
 You can easily get started with the pelican quickstart utility:
 
-```{.sourceCode .console}
+```shell
 cd /path/to/ghpages
 pelican-quickstart
 ```
@@ -101,47 +100,41 @@ Note I am not using either Fabfile or Makefile for automation. These are
 more useful if publishing to a personally managed server (i.e. not
 GitHub).
 
-* Where do you want to create your new web site? **\[.\]**
-* Do you want to specify a URL prefix? e.g., <http:example.com> **Y**
-* What is your URL prefix? (see above example; no trailing slash)
-  \*\*<http://you.github.io**>
-* Do you want to generate a Fabfile/Makefile to automate generation
-  and publishing? **N**
-* Do you want an auto-reload & simpleHTTP script to assist with theme
-  and site development? **N**
-* Do you want to upload your website using ...? **Y for only GitHub
-  Pages**
+* Where do you want to create your new web site? **[.]**
+* Do you want to specify a URL prefix? e.g., `http:example.com` **Y**
+* What is your URL prefix? (see above example; no trailing slash) **http://you.github.io**
+* Do you want to generate a Fabfile/Makefile to automate generation and publishing? **N**
+* Do you want an auto-reload & simpleHTTP script to assist with theme and site development? **N**
+* Do you want to upload your website using ...? **Y for only GitHub Pages**
 * Is this your personal page (username.github.io)? **Y**
 
-Ignore the warning regarding the existing _output_ directory. You should
+Ignore the warning regarding the existing `output` directory. You should
 now also see a content directory and some configuration files.
 
-Amend the following line in **publishconf.py** to ensure Pelican does
+Amend the following line in `publishconf.py` to ensure Pelican does
 not delete all content in the output directory prior site regeneration
 (including your git submodel repository!).
 
-```{.sourceCode .python}
+```python
 DELETE_OUTPUT_DIRECTORY = False
 ```
 
 ## Creating Your First Article
 
 All content in the Pelican source project should be written in
-[Markdown](https://en.wikipedia.org/wiki/Markdown) or [reStructured Text
-(rst)](http://www.sphinx-doc.org/en/stable/rest.html). To begin, simply
-save the articles as .md or .rst files in the _content_ directory (e.g.
-_ghpages/content/create-github-page.rst_). As your site grows you can
+[Markdown](https://en.wikipedia.org/wiki/Markdown)
+or [reStructured Text (rst)](http://www.sphinx-doc.org/en/stable/rest.html). To begin, simply
+save the articles as .md or .rst files in the `content` directory (e.g.
+`ghpages/content/create-github-page.rst`). As your site grows you can
 consider alternate methods for organization.
 
-I decided to use _rst_. You can use your favourite text editor or an IDE
-but I would recommend the [Online RestructuredText
-editor](http://rst.ninjs.org/). You can see the formatted output as you
+I decided to use `rst`. You can use your favourite text editor or an IDE
+but I would recommend the [Online RestructuredText editor](http://rst.ninjs.org/). You can see the formatted output as you
 write which is very helpful. Note that it will look different in the
 final site once CSS is applied so don't get worried about font or
 anything like that yet.
 
-Make sure to add metadata aligning with [these
-requirements](http://docs.getpelican.com/en/stable/content.html#file-metadata).
+Make sure to add metadata aligning with [these requirements](http://docs.getpelican.com/en/stable/content.html#file-metadata).
 
 **Update:** After about three months of work with Pelican using
 reStructured Text I've settled to using
@@ -154,11 +147,11 @@ broader built-in support for editing & preview (Atom etc).
 
 ## Building & Serving with HTTP
 
-Build the site using the _pelican_ utility. I would recommend using the
-_-r_ or _--autoreload_ option which will auto-reload the site allowing
+Build the site using the `pelican` utility. I would recommend using the
+`-r` or `--autoreload` option which will auto-reload the site allowing
 you to edit documents and review changes without restarting pelican.
 
-```{.sourceCode .console}
+```shell
 cd /path/to/ghpages
 pelican content/ -r
 ```
@@ -168,19 +161,19 @@ HTTP server to preview how it will look when hosted by GitHub.
 
 In Python 2:
 
-```{.sourceCode .console}
+```shell
 cd /path/to/ghpages/output
 python -m SimpleHTTPServer
 ```
 
 In Python 3:
 
-```{.sourceCode .console}
+```shell
 cd /path/to/ghpages/output
 python -m http.server
 ```
 
-Then navigate to <http://localhost:8000/> and look at your site. You can
+Then navigate to http://localhost:8000/ and look at your site. You can
 edit any of your pages as you go and simply refresh your browser to see
 the results.
 
@@ -191,7 +184,7 @@ You can easily add social media links to your main page by editing the
 
 For example:
 
-```{.sourceCode .python}
+```python
 # Social widget
 SOCIAL = (('github', 'http://github.com/you'),
           ('linkedin', 'https://linkedin.com/in/you'),
@@ -216,36 +209,36 @@ the publishconf.py settings. Based on our default set-up this will add
 absolute URLs which is important for various add-ons you may later want
 such as disqus comments.
 
-> ```{.sourceCode .console}
-> cd /path/to/ghpages
-> pelican content/ -s publishconf.py
-> ```
+```shell
+cd /path/to/ghpages
+pelican content/ -s publishconf.py
+```
 
 Add, commit & push the files in the output git submodule.
 
-> ```{.sourceCode .console}
-> cd output
-> git add .
-> git commit -m "First post."
-> git push -u origin master
-> ```
+```shell
+cd output
+git add .
+git commit -m "First post."
+git push -u origin master
+```
 
 Once complete, do the same in the source repository.
 
-> ```{.sourceCode .console}
-> cd ..
-> echo '*.pyc' >> .gitignore #don't need pyc files
-> git commit -m "First commit."
-> git push -u origin master
-> ```
+```shell
+cd ..
+echo '*.pyc' >> .gitignore #don't need pyc files
+git commit -m "First commit."
+git push -u origin master
+```
 
-Visit your site at \*<http://you.github.io*> and see the results!
+Visit your site at http://you.github.io and see the results!
 
 ## Next Steps
 
 Before making a second post, you probably want to:
 
-* create an **about page** within _content/pages/about.rst_
+* create an **about page** within `content/pages/about.rst`
 * pick one of the [many awesome themes](http://www.pelicanthemes.com/)
 
 In my next post I'll cover installing and applying themes.

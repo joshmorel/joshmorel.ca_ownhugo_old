@@ -12,7 +12,7 @@ summary: |
 ## Background
 
 Several years ago I signed up with the Windows Office 365 subscription
-at \$11.95/Can. I definitely want out and for most functions I can use
+at $11.95 Can. I definitely want out and for most functions I can use
 [LibreOffice](http://www.libreoffice.org/). However, I have a lot of my
 personal notes & knowledge base in OneNote. I like OneNote but I don't
 want to be paying those dollars for it and I want something I can have
@@ -36,17 +36,16 @@ get used to but I'm starting to really like it.
 On GNU/Linux distributions Vim may already be installed. If not, install
 with your package manager, for example on CentOS:
 
-```{.sourceCode .console}
+```shell
 sudo yum -y install vim
 ```
 
 I haven't started using Vim on Windows yet, but there's some
-instructions on the official downloads site for Windows and also Mac OS:
-<http://www.vim.org/download.php/>
+instructions on the official downloads site for Windows and also Mac OS: http://www.vim.org/download.php/
 
 Once installed, start the 30-minute tutorial and follow along:
 
-```{.sourceCode .console}
+```shell
 vimtutor
 ```
 
@@ -59,7 +58,7 @@ installing Vim plugins easy.
 Use the following multi-line command from the [GitHub
 README](https://github.com/tpope/vim-pathogen) for Linux or Mac OS:
 
-```{.sourceCode .console}
+```shell
 mkdir -p ~/.vim/autoload ~/.vim/bundle && \
 curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
 ```
@@ -70,7 +69,7 @@ replace `/.vim` with `~\vimfiles`
 
 Create or edit your vimrc file:
 
-```{.sourceCode .console}
+```shell
 vim ~/.vimrc
 ```
 
@@ -78,7 +77,7 @@ Enter insert mode my hitting `i` then add the following lines. The first
 3 are required for pathogen.vim. The other 2 are required for Vimwiki so
 let's just put them in there now.
 
-```{.sourceCode .vim}
+```vim
 execute pathogen#infect()
 syntax on
 filetype plugin indent on
@@ -94,7 +93,7 @@ Now you can install Vimwiki or any other plugin very easily as follows
 [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) if
 you don't have it already).
 
-```{.sourceCode .console}
+```shell
 cd ~/.vim
 mkdir -p bundle
 cd bundle
@@ -126,7 +125,7 @@ Let's create something simple for practice. You probably want to plan
 out your organization before you start adding any significant amount of
 content.
 
-```{.sourceCode .vim}
+```vim
 = Knowledge =
 == Programming ==
 * Python
@@ -151,7 +150,7 @@ Finally, enter `:wq` to save both file and quit.
 
 ### Vimwiki Demo
 
-![Vimwiki link gif](%7Bfilename%7D/images/vimwiki_link.gif)
+![Vimwiki link gif](/img/vimwiki_link.gif)
 
 ## Next Steps
 

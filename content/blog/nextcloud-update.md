@@ -1,17 +1,19 @@
 ---
 title: Update Nextcloud
 date: 2017-04-14T12:38:00-05:00
+moddate: 2018-01-27T05:49:00-05:00
 tags: [nextcloud]
 categories: [Cloud]
 slug: nextcloud-update
 summary: How to update Nextcloud and restore if needed
 ---
 
+**Update:** Since writing this I've learned that future major version upgrades (e.g. 12->13) will be a lot simpler so most of these instructions have lost their relevance. Even so, doing [your own backup]({{< ref "#pre-update" >}}) rior to upgrading is worthwhile insurance IMHO.
+
 ## Background
 
-After learning about a (minor?) Nextcloud controversy through the [Linux
-Action Show podcast episode
-460](http://www.jupiterbroadcasting.com/107471/nextclouds-can-of-worms-las-460/)
+After learning about a (minor?) Nextcloud controversy through the
+[Linux Action Show podcast episode 460](http://www.jupiterbroadcasting.com/107471/nextclouds-can-of-worms-las-460/)
 I decided to update my Nextcloud instance with the latest patch.
 
 Essentially, Nextcloud developed a scanner to look for vulnerabilities
@@ -29,8 +31,8 @@ generally. Although the approach may not have been perfect, action on
 their part was certainly warranted in my opinion. More details and
 opinions can be found here:
 
-* <https://help.nextcloud.com/t/someone-scans-the-internet-for-nc-oc-instances/8992/24>
-* <https://www.reddit.com/r/selfhosted/comments/5ybmf1/nextcloud_scanning_peoples_owncloud_and_nextcloud/>
+* https://help.nextcloud.com/t/someone-scans-the-internet-for-nc-oc-instances/8992/24
+* https://www.reddit.com/r/selfhosted/comments/5ybmf1/nextcloud_scanning_peoples_owncloud_and_nextcloud/
 
 ## Pre-Update
 
@@ -46,12 +48,11 @@ an article on this in the future.
 No matter your set-up, do a temporary one-time back-up before updating.
 I'll actually cover recovering from a bad update at the end of this
 article based dependent on this first step. Now, these and subsequent
-steps assume you followed my [deployment
-article](%7Bfilename%7D/deploy-nextcloud.rst) (are using Ubuntu, Apache
+steps assume you followed my [deployment article]({{< ref "deploy-nextcloud.md" >}}) (are using Ubuntu, Apache
 and MariaDB) and have sufficient storage space available. If not you'll
 have to revise as needed but the principles are the same.
 
-```{.sourceCode .console}
+```shell
 su - # become root
 rsync -Aax /var/www/nextcloud/ /var/backups/nextcloud-dirbkp/ # back-up directory
 mysqldump --lock-tables -h localhost -u root nextcloud > /var/backups/nextcloud-sqlbkp.bak # back-up database
@@ -59,8 +60,7 @@ mysqldump --lock-tables -h localhost -u root nextcloud > /var/backups/nextcloud-
 
 ## Update using Web Interface
 
-The update process [described
-here](https://docs.nextcloud.com/server/11/admin_manual/maintenance/update.html)
+The update process [described here](https://docs.nextcloud.com/server/11/admin_manual/maintenance/update.html)
 is largely automated, however, a few additional steps are required. Also
 note that 3rd party apps will be disabled (although no data will be
 deleted). At the moment, re-enabling them manually is an acceptable
@@ -69,7 +69,7 @@ choice.
 Run this script (as root) to allow the HTTP user to make changes to your
 file directory.
 
-```{.sourceCode .bash}
+```bash
 #!/bin/bash
 # Sets permissions of the Nextcloud instance for updating
 
@@ -84,28 +84,24 @@ Then log-in to the Nextcloud web interface as admin and navigate to the
 Admin page. In this case you will see that I'm not on the latest version
 and can update here.
 
-![image: Nextcloud Update Version Page](%7Bfilename%7D/images/nextcloud_update_version_page.png)
+![image: Nextcloud Update Version Page](/img/nextcloud_update_version_page.png)
 
 ---
 
 1. Click "Open updater" then "Start update".
-2. When prompted for "Keep maintenance mode active?" click "No (for
-   usage of the web based updater)".
-3. Click "Go back to your Nextcloud instance to finish the update" then
-   click "Start update"
-4. When update completed, note the apps that have been disabled and
-   click "Continue to Nextcloud"
+2. When prompted for "Keep maintenance mode active?" click "No (for usage of the web based updater)".
+3. Click "Go back to your Nextcloud instance to finish the update" then click "Start update"
+4. When update completed, note the apps that have been disabled and click "Continue to Nextcloud"
 5. Re-enable all the 3rd party apps noted in step 4
 
-If you get a "Maintenance Mode" notice during step 3 just wait a few
-moments and the page should refresh with the "Start update" options.
+If you get a `Maintenance Mode` notice during step 3 just wait a few
+moments and the page should refresh with the `Start update` options.
 
-Finally, re-harden the server with the [following script from
-Nextcloud](https://docs.nextcloud.com/server/11/admin_manual/installation/installation_wizard.html#strong-perms-label).
+Finally, re-harden the server with the [following script from Nextcloud](https://docs.nextcloud.com/server/11/admin_manual/installation/installation_wizard.html#strong-perms-label).
 
 ### Harden Server
 
-```{.sourceCode .bash}
+```bash
 #!/bin/bash
 # For hardening security on Nextcloud 11
 
@@ -154,7 +150,7 @@ you've back-up both the database and file directory as described above.
 
 First clean and restore the database:
 
-```{.sourceCode .console}
+```shell
 mysql -h localhost -u root -e "DROP DATABASE nextcloud"
 mysql -h localhost -u root -e "CREATE DATABASE nextcloud CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci"
 mysql -h localhost -u root nextcloud < /var/backups/nextcloud-sqlbkp.bak
@@ -168,12 +164,11 @@ official Nextcloud documentation but I feel this is necessary if you
 want the restored version to behave as expected. If any readers disagree
 please provide feedback!
 
-```{.sourceCode .console}
+```shell
 rsync -Aax --delete /var/backups/nextcloud-dirbkp/ /var/www/nextcloud/
 ```
 
-Finally, [Harden Server]() as when completing an update to ensure secure
-directories.
+Finally, [Harden Server]({{< ref "deploy-nextcloud.md#install-nextcloud" >}}) as when installing to ensure secure directories.
 
 If you want to restore to a previous version after any period of use on
 the latest version (i.e. downgrading) then that is a FAR trickier
@@ -193,6 +188,5 @@ production.
 I'm considering one of two things for a future Nextcloud-related
 article:
 
-1. Nextcloud automated deployment with
-   [Ansible](https://www.ansible.com/)
+1. Nextcloud automated deployment with [Ansible](https://www.ansible.com/)
 2. Making regular, automated back-ups

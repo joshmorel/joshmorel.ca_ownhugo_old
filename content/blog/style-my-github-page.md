@@ -12,7 +12,7 @@ summary: |
 
 ## Background
 
-In my [first article](%7Bfilename%7D/create-github-page.rst) I detailed
+In my [first article]({{< ref "create-github-page.md" >}}) I detailed
 how to create your GitHub Personal Page with the static site generation
 Python package named [Pelican](http://docs.getpelican.com) .
 
@@ -22,19 +22,18 @@ project page.
 
 ## Installing
 
-Before doing anything I would recommend browsing the [themes demo
-site](http://www.pelicanthemes.com/) first. If you find the one you want
+Before doing anything I would recommend browsing the [themes demo site](http://www.pelicanthemes.com/) first. If you find the one you want
 that makes everything simpler before doing any local work.
 
 To install, the best bet is to clone the entire repo and all the
-submodules (with _--recursive_ option):
+submodules (with `--recursive` option):
 
-```{.sourceCode .console}
+```shell
 git clone --recursive https://github.com/getpelican/pelican-themes.git
 ```
 
 The [README](https://github.com/getpelican/pelican-themes) recommends
-adding the absolute path to the theme in your _pelicanconf.py_ file.
+adding the absolute path to the theme in your `pelicanconf.py` file.
 
 This will work but for me since I'm working in both Linux and Windows
 environments I'd rather use the
@@ -43,13 +42,13 @@ utility.
 
 So for pelican-bootstrap3:
 
-```{.sourceCode .console}
+```shell
 pelican-themes -i /path/to/pelican-themes/pelican-bootstrap3
 ```
 
 You can confirm installation by:
 
-```{.sourceCode .console}
+```shell
 $ pelican-themes -l
 notmyidea
 pelican-bootstrap3
@@ -58,14 +57,14 @@ simple
 
 ## Applying the Theme
 
-Adding the theme is as simple as editing the **pelicanconf.py** file
+Adding the theme is as simple as editing the `pelicanconf.py` file
 with the following lines:
 
-**UPDATE**: pelican-bootstrap3 has been upgraded to include
+**UPDATE**: `pelican-bootstrap3` has been upgraded to include
 internationalization, so two more lines are required in the settings
 file.
 
-```{.sourceCode .python}
+```python
 THEME = 'pelican-bootstrap3'
 PLUGINS = ['i18n_subsites', ]
 JINJA_ENVIRONMENT = {'extensions': ['jinja2.ext.i18n']}
@@ -74,22 +73,21 @@ JINJA_ENVIRONMENT = {'extensions': ['jinja2.ext.i18n']}
 Of course, replace `pelican-bootstrap3` with whatever theme you want to
 try out, checking for additional dependencies.
 
-Now build and serve your styled site as described in my [first
-article](%7Bfilename%7D/create-github-page.rst).
+Now build and serve your styled site as described in my [first article]({{< ref "create-github-page.md" >}}).
 
 ## BONUS - Comments with Disqus
 
 You can bring some non-static commenting functionality to your static
-site with [Disqus](https://disqus.com/). With pelican-bootstrap3, as
-well as the pre-installed theme **notmyidea**, it is very simple to add.
+site with [Disqus](https://disqus.com/). With `pelican-bootstrap3`, as
+well as the pre-installed theme `notmyidea`, it is very simple to add.
 For other themes, you'll have to double-check.
 
 First create your [Disqus](https://disqus.com/) account and site, taking
-note of your site's **shortname**.
+note of your site's `shortname`.
 
-Now, in your **pelicanconf.py** add the line:
+Now, in your `pelicanconf.py` add the line:
 
-```{.sourceCode .python}
+```python
 DISQUS_SITENAME = 'shortname'
 ```
 
@@ -97,7 +95,7 @@ Where `shortname` is your Disqus site's shortname.
 
 When you build & serve your site locally, Pelican will include the HTML
 & JavaScript necessary to use Disqus in every article. Open
-<http://localhost:8000> and navigate to any article. At the bottom you
+http://localhost:8000 and navigate to any article. At the bottom you
 should see something like:
 
 > **Comments**
@@ -109,7 +107,7 @@ That's okay because we're using relative paths when building locally.
 
 Let's build with intent to publish using:
 
-```{.sourceCode .console}
+```shell
 cd /path/to/ghpages
 pelican content/ -s publishconf.py
 ```

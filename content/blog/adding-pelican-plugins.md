@@ -36,7 +36,7 @@ different in practice. I've made the repo a submodule of my source repo.
 This essentially clones it while also making it simple to reference no
 matter the device or platform I may be using.
 
-```{.sourceCode .console}
+```shell
 cd /path/to/source
 git submodule add https://github.com/getpelican/pelican-plugins
 ```
@@ -45,28 +45,27 @@ Because the pelican-plugins repo itself is full of submodules, a second
 git command is required (there is no `add --recursive`, at least not
 yet).
 
-```{.sourceCode .console}
+```shell
 git submodule update --init --recursive
 ```
 
 You should now have all the plugins you will ever need in the
-**pelican-plugins** sub-directory of your source repo. For more on
-working with submodules in your project see:
-<https://git-scm.com/book/en/v2/Git-Tools-Submodules>
+`pelican-plugins` sub-directory of your source repo. For more on
+working with submodules in your project see: https://git-scm.com/book/en/v2/Git-Tools-Submodules
 
 ## Adding Plugins
 
-Update the **pelicanconf.py** file with the following two lines.
+Update the `pelicanconf.py` file with the following two lines.
 
-```{.sourceCode .python}
+```python
 PLUGIN_PATHS = ['pelican-plugins']
 PLUGINS = ['series', 'tag_cloud']
 ```
 
 Of course, list only those specific plugins you want. How the plugins
 work is dependent on the templates and therefore the theme you have
-chosen. If your following along exactly you have **pelican-bootstrap3**
-which works nicely with both the **series** and **tag_cloud** plugins.
+chosen. If your following along exactly you have `pelican-bootstrap3`
+which works nicely with both the `series` and `tag_cloud` plugins.
 If the plugin you want doesn't work with the theme you've adopted you
 will need to add custom [Jinja2](http://jinja.pocoo.org/docs/dev/)
 templates.
@@ -81,7 +80,7 @@ article listing all previous and next articles in the series.
 All you need to do is add the `:series:` element to your article
 metadata, for example:
 
-```{.sourceCode .restructuredtext}
+```
 :series:  Pelican
 ```
 
@@ -100,7 +99,7 @@ on the right sidebar.
 To benefit simply add a comma-separated list of tags to each article's
 metadata, for example:
 
-```{.sourceCode .restructuredtext}
+```
 :tags:  python, github, pelican
 ```
 
