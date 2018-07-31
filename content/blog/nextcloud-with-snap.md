@@ -22,6 +22,37 @@ Because all the dependencies and core product are packaged together in a single 
 
 If you're on Ubuntu 16.04+ you already have it. For other Linux distros instructions are [available here](https://docs.snapcraft.io/core/install).
 
-That's it. There are no more dependencies you have to set up yourself.
+That's it. There are no more dependencies you have to install separately.
 
-## Installing and Configuring Nextcloud 
+## Installing and Configure Nextcloud
+
+To install the snap package:
+
+```bash
+sudo snap install nextcloud
+```
+
+To finish the install - which includes setting up the admin user and adding a trusted domain - there are two options:
+
+1) Visit your hostname in a webbrowser and enter an admin username and password. Once complete you should be able to start adding normal users and apps right away. Among other changes, the `trusted_domains` array in the config file will be updated to include the visited hostname. The config file can be found at `/var/snap/nextcloud/current/nextcloud/config/config.php`.
+
+2) Run the `nextcloud.manual-install` command and add the hostname to a `trusted_domains` array with the `nextcloud.occ` command.
+
+```bash
+export ADMIN_NAME=admin
+ export ADMIN_PASS=super-secret #leading space to not save in history
+export EXTERNAL_HOST=mydomain.tld
+sudo snap run nextcloud.manual-install $ADMIN_NAME $ADMIN_PASS && \
+    sudo snap run nextcloud.occ config:system:set trusted_domains 1 --value=$EXTERNAL_HOST
+```
+
+`sudo snap run nextcloud.occ` gives you access to the majority of the tools required for maintaining the Nextcloud app via the command line. I'll describe most of the others in the coming sections.
+
+Two commonly changed config values which must be set a different way are the PHP memory limit (default 128M) and the cronjob interval (default 15 min). These can be updated, for example, with.
+
+```bash
+sudo snap set nextcloud php.memory-limit=512M
+sudo snap set nextcloud nextcloud.cron-interval=10m
+```
+
+Using `-1` as the value will disable either.
