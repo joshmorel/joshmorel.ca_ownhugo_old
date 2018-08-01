@@ -116,19 +116,16 @@ On the snap destination:
 sudo snap run nextcloud.occ maintenance:mode --on
 ```
 
-Next migrate the required data. The three items we will be migrating are:
+Next migrate the data - both the user files stored within the `datadirectory` and the MySQL database.
 
-1) Data directory
-2) Database
-3) Enabled Apps
-
-It's best practice from security perspective not to ssh as root so use a non-root user. This will include all data except `updater` folders and logs. It is up to you if you want to migrate the main log or not. If you're data directory is different then update accordingly.
+From the source, we'll require sudo to access the data but we should be sending data to a non-root user on the destination to follow security best practices. First exchange the required keys and then run this rsync command:
 
 ```bash
+# exclude updater related data/logs
 sudo rsync -av --exclude=updater* -e ssh /var/www/nextcloud/data user@newhost.com:~/
 ```
 
-On the new host, the simplest thing is to just delete the existing data directory and move the rsync'd directory over.
+On the new host, it'll be easiest to just to overwrite the entire existing data directory. For snap packages, the directory should be owned by root instead of the `www-data` user.
 
 ```bash
 export DATA_DIR=/var/snap/nextcloud/common/nextcloud/data
@@ -137,7 +134,7 @@ sudo mv ~/data "$DATA_DIR"
 sudo chown -R root:root "$DATA_DIR"
 ```
 
-The `appdata_*` directory will have a suffix of the instanceid. I'm going to update the instance id.
+The `appdata_*` directory is suffixed with the Nextcloud `instanceid`, we'll update the destination to match. 
 
 ```bash
 export INSTANCEID=oc003ous0gb1
@@ -146,14 +143,12 @@ sudo snap run nextcloud.occ config:system:set instanceid --value="$INSTANCEID"
 
 Next we dump the MySQL/MariaDB database and restore it. MySQL is included in the snap and it's the only option - but a MariaDB source will definitely work.
 
-Dump and copy over the file:
-
 ```bash
 sudo mysqldump --lock-tables -h localhost -u root -p secret nextcloud > nextcloud-sql.bak
 scp nextcloud-sql.bak user@newhost.com:~/
 ```
 
-Next we want to drop all existing tables and execute the dump script. We don't want to drop and create the database as we will lose the specific settings/permissions included during the snap install.
+Prior to restoring from the dump script we want to drop all existing tables. We don't want to drop and recreate the database as settings & permissions have been specifically setup during the snap install and we don't want to try to recreate that.
 
 ```bash
 sudo snap run nextcloud.mysql-client -N -e "SELECT concat('DROP TABLE IF EXISTS ', table_name, ';') FROM information_schema.tables WHERE table_schema = 'nextcloud';"
@@ -161,22 +156,44 @@ sudo snap run nextcloud.mysql-client nextcloud < droptables.sql
 sudo snap run nextcloud.mysql-client nextcloud < nextcloud-sql.bak
 ```
 
-The final step is to make sure all the enabled apps in the snap match those enabled in the classic source.
-This actually turned out to be fairly simple. Turn off maintenance mode -- `sudo snap run nextcloud.occ maintenance:mode --off` -- and log in to the UI as the site admin.
+All the data is now migrated. A few final steps are required before it's ready to use. 
 
-Click on your avatar (top right) and then Apps. You'll have to browse to each category (e.g. "Office & text") but when you do you'll see those apps you copied your data over for listed first with "This app has an update available".
+### Final Steps
+
+First, depending on you're migration path, you'll want to:
+
+1) If you're using a floating IP, simply update the floating IP via your VPS to the new host
+2) If you're migrating to a new host without a floating IP, update your DNS record to the new host's IP
+3) If you're migrating on the same host, you would have already needed to stop the non-snap `apache2`/`httpd` services for the Nextcloud snap to run but you'll also want to disable/uninstall these non-snap applications as they are no longer needed (Apache, MariaDB/MySQL, certbot, PHP modules)
+
+Second, install the SSL certificate with the snap command as [described above]({{< ref "#installing-ssl-certificates" >}}).
+
+Third, turn off maintenance mode:
+
+```bash
+sudo snap run nextcloud.occ maintenance:mode --off
+```
+
+Finally, make sure all the enabled apps in the snap match those enabled in the classic source. 
+
+This actually turned out to be fairly simple. Log into the Web UI, then click the top-right avatar icon followed by the "Apps" item.
+You'll have to browse to each category (e.g. "Office & text") but when you do you'll see those apps you copied your data over for listed first with "This app has an update available".
 
 ![Nextcloud calendar app update](/img/nextcloud-calendar-update.png)
 
 Click "Update to x" button for each and you're done the migration! 
 
-### Final Steps
+To be sure you've enabled all the extra apps, you can compare the app lists. In the classic source:
 
-The only other thing that is required is to generate the SSL certificate as described previously and either:
+```bash
+sudo -u www-data php occ app:list
+```
 
-1) Updating the floating IP with your VPS to the new hosts if you choose the same option as me
-2) Update your DNS record if you migrated to a new host without a floating IP
-3) Clean up any of the old apps and data if migrating to snap on the same host
+On the snap destination:
+
+```bash
+sudo snap run nextcloud.occ app:list
+```
 
 ## Backing Up
 
