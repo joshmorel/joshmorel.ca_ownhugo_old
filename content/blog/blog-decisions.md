@@ -1,8 +1,7 @@
 ---
 title: Blog Decision Making
 date: 2018-01-27T23:11:00-05:00
-tags: [blogging, go, hugo]
-categories: [Web publishing]
+tags: [Blogging, Golang, Hugo]
 slug: blog-decisions
 summary: |
     Making decisions about the future of my blog

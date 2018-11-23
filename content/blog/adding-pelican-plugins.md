@@ -1,8 +1,7 @@
 ---
 title: Adding Pelican Plugins
 date: 2016-12-02T18:38:00-05:00
-tags: ['python', 'pelican', 'github']
-categories: ['Web publishing']
+tags: [Python, Pelican, GitHub]
 slug: adding-pelican-plugins
 summary: |
     Step by step instructions for adding a plugin or two to your pelican
