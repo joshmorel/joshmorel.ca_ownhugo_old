@@ -1,8 +1,7 @@
 ---
 title: Node Virtual Environments with nodenv
 date: 2017-03-04T18:38:00-05:00
-tags: [node, nodenv]
-categories: [JavaScript]
+tags: ["Node.js", nodenv]
 slug: [node-virtual-environments-with-nodenv]
 summary: Using nodenv for Node.js virtual environments in Ubuntu
 ---

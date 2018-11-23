@@ -2,8 +2,7 @@
 title: Sync-n-Share Nextcloud Sandbox with Desktop Clients
 date: 2017-01-15T8:15:00-05:00
 lastmod: 2017-04-02T15:41:00-05:00
-tags: [nextcloud, ubuntu, iptables]
-categories: [Cloud]
+tags: [Nextcloud, Ubuntu, iptables]
 slug: nextcloud-clients
 summary: |
     Step-by-step instructions to for sync & share files across multiple

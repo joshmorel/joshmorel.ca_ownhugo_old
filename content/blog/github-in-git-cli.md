@@ -1,8 +1,7 @@
 ---
 title: GitHub from the CLI with Hub
 date: 2017-08-04T07:41:00-05:00
-tags: [git, github]
-categories: [DevOps]
+tags: [Git, GitHub]
 slug: github-from-cli-hub
 summary: Use git+hub for GitHub usage via the command line interface
 ---

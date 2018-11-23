@@ -1,8 +1,7 @@
 ---
 title: Deploy Nextcloud 11 on Ubuntu 16.04 Cloud Instance
 date: 2017-01-27T11:40:00-05:00
-tags: [nextcloud, apache, ubuntu]
-categories: [Cloud]
+tags: [Nextcloud, Apache, Ubuntu]
 slug: deploy-nextcloud
 summary: |
     Step-by-step instructions for deploying Nextcloud 11 on Ubuntu 16.04

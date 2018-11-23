@@ -2,8 +2,7 @@
 title: Install Nextcloud 11 Sandbox on Ubuntu 16.04 VM
 date: 2017-01-07T10:45:00-05:00
 lastmod: 2017-04-02T15:41:00-05:00
-tags: [nextcloud, linux, ubuntu, mariadb, apache, php]
-categories: [Cloud]
+tags: [Nextcloud, Linux, Ubuntu, MariaDB, Apache, PHP]
 slug: install-nextcloud-dev-vm
 summary: | 
     Step-by-step instructions for installing Nextcloud 11 on an Ubuntu

@@ -2,8 +2,7 @@
 title: Style my GitHub Page with Pelican-Themes
 date: 2016-11-28T07:34:00-05:00
 lastmod: 2017-04-16T12:19:00-05:00
-tags: [blogging, python, pelican, github, disqus]
-categories: [Web publishing]
+tags: [Blogging, Python, Pelican, GitHub, Disqus]
 slug: style-my-github-page
 summary: |
     Step by step instructions for adding style to your GitHub Page with

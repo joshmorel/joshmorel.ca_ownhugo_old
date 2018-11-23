@@ -2,8 +2,7 @@
 title: Update Nextcloud
 date: 2017-04-14T12:38:00-05:00
 moddate: 2018-01-27T05:49:00-05:00
-tags: [nextcloud]
-categories: [Cloud]
+tags: [Nextcloud]
 slug: nextcloud-update
 summary: How to update Nextcloud and restore if needed
 ---
