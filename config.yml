@@ -1,5 +1,5 @@
 # General config
-baseURL: "https://joshmorel.ca/"
+baseURL: "https://joshmorel.ca"
 languageCode: "en-us"
 title: "Josh Morel"
 metaDataFormat: "yaml"
