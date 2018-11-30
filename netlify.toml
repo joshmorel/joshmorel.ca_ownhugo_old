@@ -1,8 +1,7 @@
 [build]
 publish = "public"
 command = "hugo --gc --minify"
-
-[context.production.environment]
 HUGO_VERSION = "0.51"
-HUGO_ENV = "production"
-HUGO_ENABLEGITINFO = "true"
+
+[context.deploy-preview.environment]
+command = "hugo --gc --minify --buildFuture"
