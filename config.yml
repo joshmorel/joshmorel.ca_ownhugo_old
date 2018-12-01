@@ -1,5 +1,5 @@
 # General config
-baseURL: "https://festive-blackwell-1605e0.netlify.com/"
+baseURL: "https://test.refactored.ca/"
 languageCode: "en-us"
 title: "Josh Morel"
 metaDataFormat: "yaml"
