@@ -3,8 +3,15 @@ baseURL = "https://festive-blackwell-1605e0.netlify.com/"
 languageCode = "en-us"
 title = "Josh Morel"
 theme = "ghostwriter"
+copywrite = "Josh Morel"
+disqusShortname = "joshmorel"
 
 # Theme config
+
+[Privacy]
+
+[Privacy.disqus]
+    disable = false
 
 [Author]
     name = "Josh Morel"
