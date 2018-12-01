@@ -1,12 +1,13 @@
----
-title: Create a Household Wiki using Vimwiki
-date: 2016-12-09T19:38:00-05:00
-tags: [Vim, Vimwiki]
-slug: create-householdwiki-vimwiki
-summary: |
-    Step by step instructions for initial set-up of for household wiki
-    using Vimwiki
----
++++
+title = "Create a Household Wiki using Vimwiki"
+summary = "Step by step instructions for initial set-up of household wiki using Vimwiki"
+date = 2016-12-09T19:38:00-05:00
+slug = "create-householdwiki-vimwiki"
+tags = [
+    "Vim",
+    "Vimwiki"
+]
++++
 
 ## Background
 
