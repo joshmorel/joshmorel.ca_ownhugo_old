@@ -1,0 +1,49 @@
+# General config
+baseURL = "https://festive-blackwell-1605e0.netlify.com/"
+languageCode = "en-us"
+title = "Josh Morel"
+theme = "ghostwriter"
+
+# Theme config
+
+[Author]
+    name = "Josh Morel"
+
+[Taxonomies]
+    tag = "tags"
+
+[Params]
+  intro = true
+  headline = "Josh Morel"
+  description = '''
+    This site is all about sharing a bit of my knowledge with the world and, more importantly, my future self.
+
+    Topics of interest include web development, system administration, DevOps, 
+    GNU/Linux, Go, Python, Node.js, JavaScript & Vim.
+  '''
+  github = "https://github.com/joshmorel/"
+  email = "morel.josh@hotmail.com"
+  stackoverflow = "https://stackoverflow.com/users/4582054/josh-morel"
+  twitter = "https://twitter.com/kitchener25"
+  linkedin = "https://www.linkedin.com/in/josh-morel-94373221/"
+
+## Main Menu
+[[menu.main]]
+  name = "Home"
+  weight = 1
+  url = "/"
+
+[[menu.main]]
+  name = "Blog"
+  weight = 2
+  url = "/blog/"
+
+[[menu.main]]
+  name = "Projects"
+  weight = 3
+  url = "/projects/"
+
+[[menu.main]]
+  name = "About"
+  weight = 4
+  url = "/about/"
