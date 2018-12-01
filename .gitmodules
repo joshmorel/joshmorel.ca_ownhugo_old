@@ -1,4 +1,4 @@
 [submodule "themes/minimal"]
 	path = themes/minimal
-	url = https://github.com/calintat/minimal.git
-	master = master
+	url = https://github.com/calintat/minimal
+	branch = master
