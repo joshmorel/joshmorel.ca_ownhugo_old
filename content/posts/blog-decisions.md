@@ -1,11 +1,12 @@
----
-title: Blog Decision Making
-date: 2018-01-27T23:11:00-05:00
-tags: [Blogging, Golang, Hugo]
-slug: blog-decisions
-summary: |
-    Making decisions about the future of my blog
----
++++
+title = "Blog Decision Making"
+date = "2018-01-27T23:11:00-05:00"
+tags = ["Blogging", "Golang", "Hugo"]
+slug = "blog-decisions"
+summary = """
+I write about my decision to switch to yet another (3rd so far) static site generator - Hugo.
+"""
++++
 
 ## Background
 

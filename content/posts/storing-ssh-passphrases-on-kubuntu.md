@@ -1,12 +1,14 @@
----
-title: Storing SSH Key Passphrases on Kubuntu
-date: 2018-11-29T18:38:00-05:00
-tags: [Kubuntu, KDE, Ubuntu, SSH]
-slug: storing-ssh-passphrases-on-kubuntu
-summary: Simple instructions for storing SSH key passphrases in the KWallet on Kubuntu
----
++++
+title = "Storing SSH Key Passphrases on KDE Plasma"
+date = "2018-11-29T18:38:00-05:00"
+tags = ["Kubuntu", "KDE", "Ubuntu", "SSH"]
+slug = "storing-ssh-passphrases-on-kubuntu"
+summary = """
+Unlike GNOME, KDE Plasma does not have a super automatic means of storing SSH key passphrases in the user's keyring. This post includes provides quick instructions on how to do so as well as as some extra explanatory details.
+"""
++++
 
-# TL;DR
+## TL;DR
 
 Storing your SSH key passphrases in the KWallet on Kubuntu is simple, albeit not as streamlined as with the GNOME Keyring. To do so create an executable file `~/.config/autostart-scripts/ssh-add.sh` with the following content:
 
@@ -19,9 +21,9 @@ To include more keys beyond the default `~/.ssh/id_rsa` add each as an argument,
 
 Execute the file or re-login to receive a prompt to store the passphrase in KWallet.
 
-# Explanatory Walkthrough
+## Explanatory Walkthrough
 
-## Background
+### Background
 
 In my Linux desktop journey over the last few years I've switched from Kubuntu to Ubuntu GNOME 
 to the GNOME-based POP!_OS and now back to Kubuntu. 
@@ -35,7 +37,7 @@ Plasma uses the similar KWallet (or KDE Wallet Manager) however storing passphra
 
 To figure it out, I followed these instructions from the [Arch Linux Wiki](https://wiki.archlinux.org/index.php/KDE_Wallet). In the rest of this post I will apply these instructions to Kubuntu with explanation.
 
-## Prerequisites
+### Prerequisites
 
 The Arch Linux article specifies the following pre-requisits:
 
@@ -52,7 +54,7 @@ update-alternatives --list ssh-askpass
 # /usr/bin/kssaskpass
 ```
 
-## Autostart Script
+### Autostart Script
 
 Shell scripts created in `~/.config/autostart-scripts/` will execute at login, exactly what is needed for this use case. 
 
@@ -80,6 +82,6 @@ Note that the redirect `</dev/null` is used to ensure `ksshaskpass` is used (alt
 
 The only thing left is to save the passphrase in the KWallet. This can be done either by executing the script from the terminal or logging out and then back in. A prompt will appear. Enter the passphrase, opt to remember it, and click OK.
 
-![image: KWallet save passphrase](/img/kwallet-ssh-add.png).
+{{< bootstrap/figure src="/img/kwallet-ssh-add.png" caption="Saving passphrase to KWallet" extra_figcaption_class="text-center" >}}
 
 Now the passphrase will be read from KWallet at each login and added to the SSH Agent, no passphrase re-entry required.

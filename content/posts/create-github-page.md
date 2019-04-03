@@ -1,13 +1,13 @@
----
-title: Create a GitHub Personal Page with Python
-date: 2016-11-25T07:41:00-05:00
-lastmod: 2017-02-26T09:44:00-05:00
-tags: [Blogging, Python, Pelican, GitHub]
-slug: create-a-github-personal-page-with-python
-summary: |
-    Step by step instructions for creating a personal site hosted on
-    github pages
----
++++
+title = "Create a GitHub Personal Page with Python"
+date = "2016-11-25T07:41:00-05:00"
+lastmod = "2017-02-26T09:44:00-05:00"
+tags = ["Blogging", "Python", "Pelican", "GitHub"]
+slug = "create-a-github-personal-page-with-python"
+summary = """
+The second static site generator I used was the Python package Pelican, which is a good alternate to Jekyll for creating a GitHub Personal Page. My post summarizes a few of the benefits as well as how to use it in a basic way.
+"""
++++
 
 ## Background
 
@@ -17,9 +17,7 @@ will host that static site for you for free. These two combined allow
 someone to create and present a beautiful site without needing to know
 much HTML, CSS, or JavaScript or require a paid or local web server.
 
-Additionally, you can avoid [vendor lock-in](https://en.wikipedia.org/wiki/Vendor_lock-in) associated with
-using something like Wordpress as all your content will be in simple
-marked up text files maintained both locally and on GitHub.
+Additionally, you can avoid [vendor lock-in](https://en.wikipedia.org/wiki/Vendor_lock-in) associated with using something like Wordpress as all your content will be in simple marked up text files maintained both locally and on GitHub.
 
 Prerequisites include:
 

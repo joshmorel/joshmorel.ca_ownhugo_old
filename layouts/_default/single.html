@@ -1,0 +1,24 @@
+{{ define "main" }}
+<main class="container">
+  <div id="page-content">
+    {{ if .Title }}
+    <section class="page-content-head">
+        <h1>{{ .Title }}</h1>
+      {{ if .Params.tags }}
+        {{ partial "tag-list" . }}
+      {{ end }}
+    </section>
+    {{ end }}
+    {{ if eq .Section "projects" }}
+      <p>
+        {{ .Params.summary }}
+      </p>
+      <p>
+        <a href="{{ .Params.repo }}" target="_blank" rel="noopener">Visit repo</a>
+      </p>
+    {{ else }}
+      {{ .Content }} 
+    {{ end }}
+  </div>
+</main>
+{{ end }}

@@ -1,0 +1,34 @@
+{{ define "main" }}
+<main class="container">
+  <h1 class="list-title">{{ .Title }}</h1>
+  {{ range .Pages }}
+  <article class="list-item">
+    <section class="list-item-head">
+      {{ if eq .Section "projects" }}
+      <h2><a href="{{ .Params.repo }}" target="_blank" rel="noopener" title="Visit repo">{{ .Title }}</a></h2>
+      {{ else }}
+        <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+        {{ if gt .Date.Unix 0  }}
+        <small>Posted on <time datetime="{{ .Date.Format "2016-01-02" }}">{{ .Date.Format "Jan 2, 2006" }}</time></small>
+          {{ if gt .Lastmod .Date }}
+          <small>/ Modified <time datetime="{{ .Date.Format "2016-01-02" }}">{{ .Lastmod.Format "Jan 2, 2006" }}</time></small>
+          {{ end }}
+        {{ end }}
+      {{ end }}
+    </section>
+    <section class="list-item-body">
+      <p>
+        {{ if .Params.summary }}
+          {{ .Params.summary }}
+        {{ else }}
+          {{ .Summary | plainify | htmlUnescape }}
+          {{ end }} {{ if .Content }} <a href="{{ .RelPermalink }}">Read More…</a> {{ end }}
+      </p>
+    </section>
+    <section class="list-item-foot">
+      {{ partial "tag-list" . }}
+    </section>
+  </article>
+  {{ end }}
+</main>
+{{ end }}

@@ -1,0 +1,13 @@
+{{ define "main" }}
+<main class="container d-flex align-items-center">
+  <div id="homepage" class="row align-items-stretch mt-3 mb-3">
+    <div class="col-md d-flex flex-column justify-content-end text-right text-uppercase border-right">
+      <h1 class="author">{{ .Site.Params.author }}</h1>
+      <p class="headline">{{ .Site.Params.headline }}</p>
+    </div>
+    <div id="homepage-content" class="col-md border-left mt-3 mt-md-0 mb-3 mb-md-0">
+      {{ .Content }}
+    </div>
+  </div>
+</main>
+{{ end }}

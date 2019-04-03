@@ -1,12 +1,12 @@
----
-title: Adding Pelican Plugins
-date: 2016-12-02T18:38:00-05:00
-tags: [Python, Pelican, GitHub]
-slug: adding-pelican-plugins
-summary: |
-    Step by step instructions for adding a plugin or two to your pelican
-    static site
----
++++
+title = "Adding Pelican Plugins"
+date = "2016-12-02T18:38:00-05:00"
+tags = ["Python", "Pelican", "GitHub"]
+slug = "adding-pelican-plugins"
+summary = """
+Much of the diserable functionality for a modern website is delivered via community extensions for the Pelican package. I provides instructions for certain examples in this post, including the Disqus Comments extension.
+"""
++++
 
 ## Background
 
