@@ -19,7 +19,7 @@
     <section class="list-item-body">
       <p>
         {{ if .Params.summary }}
-          {{ .Params.summary }}
+          {{ .Params.summary | markdownify }}
         {{ else }}
           {{ .Summary | plainify | htmlUnescape }}
           {{ end }} {{ if .Content }} <a href="{{ .RelPermalink }}">Read More…</a> {{ end }}

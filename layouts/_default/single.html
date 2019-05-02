@@ -11,7 +11,7 @@
     {{ end }}
     {{ if eq .Section "projects" }}
       <p>
-        {{ .Params.summary }}
+        {{ .Params.summary | markdownify }}
       </p>
       <p>
         <a href="{{ .Params.repo }}" target="_blank" rel="noopener">Visit repo</a>
