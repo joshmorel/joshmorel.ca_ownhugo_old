@@ -1,0 +1,19 @@
+{{ define "main" }}
+<main class="container">
+  <h1 class="list-title">{{ .Title }}</h1>
+  {{ range .Data.Terms.ByCount }}
+    <article class="list-item">
+      <section class="list-item-head">
+        <h2>#{{ .Name | urlize }}</h2>
+      </section>
+      <section class="list-item-body">
+        <ul>
+        {{ range .Pages }}
+          <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+        {{ end }}
+        </ul>
+      </section>
+    </article>
+  {{ end }}
+</main>
+{{ end }}

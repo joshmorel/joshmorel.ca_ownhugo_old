@@ -1,0 +1,20 @@
+<head>
+  <meta charset="UTF-8">
+
+  <title>
+    {{ if eq .RelPermalink "/" }} {{ .Site.Params.Author }} {{ else }} {{ .Title }} {{ end }}
+  </title>
+
+  <!-- icons -->
+  <link rel="icon" type="image/png" sizes="16x16" href="{{ "favicon-16x16.png" | absURL }}">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ "favicon-32x32.png" | absURL }}">
+  <link rel="icon" type="image/png" sizes="96x96" href="{{ "favicon-96x96.png" | absURL }}">
+  
+  <!-- css -->
+  <link href="https://fonts.googleapis.com/css?family=Nunito+Sans|Kalam=700|PT+Serif|PT+Serif+Caption" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="{{ "css/syntax.css" | absURL }}">
+  <link rel="stylesheet" href="{{ "css/main.css" | absURL }}">
+
+</head>

@@ -1,0 +1,68 @@
+baseURL = "https://joshmorel.ca/"
+title = "Josh Morel's Blog"
+
+# enable highlighting
+pygmentsUseClasses = true
+pygmentsCodeFences = true
+
+sectionPagesMenu = "main"
+
+[params]
+  author = "Josh Morel"
+  brand = "joshmorel"
+  headline = "Freelance Web Developer"
+
+[menu]
+
+  [[menu.main]]
+    name = "Home"
+    url = "/"
+    weight = 1
+
+  [[menu.main]]
+    identifier = "posts"
+    name = "Blog"
+    url = "/posts/"
+    weight = 2
+
+  [[menu.main]]
+    identifier = "projects"
+    name = "Projects"
+    url = "/projects/"
+    weight = 3
+
+  [[menu.main]]
+    identifier = "tags"
+    name = "Tags"
+    url = "/tags/"
+    weight = 4
+
+  [[menu.icon]]
+    url = "mailto:morel.josh@hotmail.com"
+    name = "fas fa-envelope"
+    title = "Mail"
+    weight = 1
+
+  [[menu.icon]]
+    url = "https://github.com/joshmorel/"
+    name = "fab fa-github-alt"
+    title = "GitHub"
+    weight = 2
+
+  [[menu.icon]]
+    url = "https://linkedin.com/in/joshmorel/"
+    name = "fab fa-linkedin-in"
+    title = "LinkedIn"
+    weight = 3
+
+  [[menu.icon]]
+    url = "https://stackoverflow.com/users/4582054/josh.morel"
+    name = "fab fa-stack-overflow"
+    title = "StackOverflow"
+    weight = 4
+
+  [[menu.icon]]
+    url = "https://twitter.com/kitchener25"
+    name = "fab fa-twitter"
+    title = "Twitter"
+    weight = 5

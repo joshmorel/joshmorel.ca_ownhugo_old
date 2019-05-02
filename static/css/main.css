@@ -1,0 +1,257 @@
+/* General Styling */
+
+body {
+  font-family: "PT Serif", serif;
+  background: #246166;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+h1, h2, h3, h4, h4, h6 {
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: bold;
+}
+
+main {
+  /* stretch to take up extra space of body so footer is at bottom */
+  flex: 1;
+}
+
+a:link, a:visited {
+  color: #246166;
+}
+
+a:hover, a:active {
+  color: #193a43;
+}
+
+figure {
+  padding: 20px 0;
+  margin-bottom: 40px;
+  border-bottom: solid 1px #ccc;
+}
+
+/* Header Styling */
+
+header {
+  background-color: white;
+  font-size: 20px;
+  font-family: "Kalam", cursive;
+  font-weight: bold;
+}
+
+.navbar-light .navbar-brand:link,
+.navbar-light .navbar-brand:visited {
+  font-size: 24px;
+  color: #246166;
+}
+
+.navbar-light .navbar-brand:hover,
+.navbar-light .navbar-brand:active {
+  color: #193a43;
+}
+
+.navbar-light .navbar-nav .nav-link:link,
+.navbar-light .navbar-nav .nav-link:visited {
+  color: #246166;
+  text-decoration: none;
+}
+
+.navbar-light .navbar-nav .nav-link:hover,
+.navbar-light .navbar-nav .nav-link:active {
+  color: #193a43;
+}
+
+.navbar-light .navbar-nav .nav-link.active {
+  color: #ff4500;
+  text-decoration: underline;
+}
+
+/* Footer Styles */
+
+footer {
+  text-align: center;
+  color: #bbb;
+}
+
+footer a:link,
+footer a:visited {
+  color: #bbb;
+  text-decoration: none;
+}
+
+footer a:hover,
+footer a:active {
+  color: #333;
+  text-decoration: none;
+}
+
+footer p a:link,
+footer p a:visited,
+footer p a:hover,
+footer p a:active {
+  text-decoration: underline;
+}
+
+footer > ul {
+  text-align: center;
+  padding: 0 0 10px;
+}
+
+footer li {
+  display: inline;
+  padding: 0 10px;
+  font-size: 24px;
+}
+
+/* Homepage Styling */
+
+#homepage {
+  color: white;
+  font-family: "Nunito Sans", sans-serif;
+}
+
+#homepage .author {
+  font-size: 70px;
+  margin: 0;
+}
+
+#homepage .headline {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0;
+}
+
+#homepage-content > * {
+  margin: 0;
+}
+
+#homepage-content > :not(:first-child) {
+  text-indent: 20px;
+}
+
+/* Section List Styling */
+
+.list-title {
+  color: white;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.list-item {
+  background: #fff;  
+  margin: 20px 0;
+  padding: 20px;
+  border: solid 1px; 
+  border-radius: 3px;
+}
+
+.list-item a:link, .list-item a:visited {
+  text-decoration: underline;
+}
+
+.list-item .list-item-body a:visited {
+  color: #7a306c;
+}
+
+.list-item .list-item-body a:hover,
+.list-item .list-item-body a:active {
+  color: #193a43;
+}
+
+.list-item-head {
+  margin: 0;
+  padding: 0 0 20px;
+  border-bottom: solid 2px #777;
+}
+
+.list-item-head h2 {
+  margin: 0;
+}
+
+.list-item-head small {
+  font-style: italic;
+}
+
+.list-item-body {
+  margin: 0;
+  padding: 20px 0;
+}
+
+.list-item-body p {
+  font-family: 'PT Serif Caption', serif;
+  margin: 0;
+}
+
+.list-item-foot {
+  margin: 0;
+  padding: 20px 0 0;
+  border-top: solid 2px #777;
+}
+
+/* Tag List Styling */
+
+.tag-list {
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+  font-family: "Liberation Mono", Monaco, "Courier New", Courier, monospace;
+}
+
+.tag-list .tag-list-item {
+  display: inline;
+  padding-right: 5px;
+}
+
+.tag-list .tag-list-item a:link, .tag-list .tag-list-item a:visited {
+  font-weight: bold;
+  text-decoration: none;
+}
+
+/* Single Page Styling */
+
+#page-content {
+  background: #fff;  
+  margin: 20px 0;
+  padding: 20px;
+  border: solid 1px; 
+  border-radius: 3px;
+}
+
+#page-content > h1 {
+  margin-top: 0;
+}
+
+.page-content-head {
+  margin: 0 0 20px;
+  padding: 0 0 20px;
+  border-bottom: solid 2px #777;
+}
+
+#page-content h2:not(:first-of-type)::before {
+  display: block;
+  content: " ";
+  padding: 20px 0 0;
+  border-top: solid 2px #777;
+}
+
+:not(.chroma) > code {
+  background-color: #ddd;
+}
+
+.chroma {
+  font-size: 0.9em;
+  padding: 10px;
+}
+
+/* 404 Page Styling */
+
+#header-404 {
+  color: white;
+  font-size: 50px;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translateX(-50%);
+}

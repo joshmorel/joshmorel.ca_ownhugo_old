@@ -1,12 +1,12 @@
----
-title: Deploy Nextcloud 11 on Ubuntu 16.04 Cloud Instance
-date: 2017-01-27T11:40:00-05:00
-tags: [Nextcloud, Apache, Ubuntu]
-slug: deploy-nextcloud
-summary: |
-    Step-by-step instructions for deploying Nextcloud 11 on Ubuntu 16.04
-    to a private cloud.
----
++++
+title = "Deploy Nextcloud 11 on Ubuntu 16.04 Cloud Instance"
+date = "2017-01-27T11:40:00-05:00"
+tags = ["Nextcloud", "Apache", "Ubuntu"]
+slug = "deploy-nextcloud"
+summary = """
+My first production deployment of Nextcloud was a version 11 manual (non-Snap) install on a Digital Ocean Ubuntu 16.04 instance. This post details my steps through this process including setting up a Let's Encrypt SSL certificate.
+"""
++++
 
 ## Background
 
@@ -363,7 +363,7 @@ Then run the program:
 sudo letsencrypt --apache
 ```
 
-![image: Let's Encrypt Domain Selection](/img/letsencrypt_domain.png)
+{{< bootstrap/figure src="/img/letsencrypt_domain.png" caption="Let's Encrypt domain selection" extra_figcaption_class="text-center" >}}
 
 1. You should only have the one domain - "cloud.yourdomain.tld" - to
    select, ensure it is selected & continue.

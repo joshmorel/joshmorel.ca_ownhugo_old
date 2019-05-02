@@ -1,13 +1,13 @@
----
-title: Install Nextcloud 11 Sandbox on Ubuntu 16.04 VM
-date: 2017-01-07T10:45:00-05:00
-lastmod: 2017-04-02T15:41:00-05:00
-tags: [Nextcloud, Linux, Ubuntu, MariaDB, Apache, PHP]
-slug: install-nextcloud-dev-vm
-summary: | 
-    Step-by-step instructions for installing Nextcloud 11 on an Ubuntu
-    16.04 VM with Apache, MariaDB & PHP 7.0.
----
++++
+title = "Install Nextcloud 11 Sandbox on Ubuntu 16.04 VM"
+date = "2017-01-07T10:45:00-05:00"
+lastmod = "2017-04-02T15:41:00-05:00"
+tags = ["Nextcloud", "Linux", "Ubuntu", "MariaDB", "Apache", "PHP"]
+slug = "install-nextcloud-dev-vm"
+summary = """
+Before using Nextcloud in production I got it figured out on a local VM "sandbox". In this post I walkthrough an install of Nextcloud 11 on an Ubuntu 16.04 VM with Apache, MariaDB & PHP 7.0.
+"""
++++
 
 **Update:** I've updated the titles for the first two articles in my
 Nextcloud series to explicitly identify the target environment being a
@@ -62,9 +62,7 @@ virt-manager
 
 In the GUI Click the **Create a new virtual machine** button.
 
-![image: KVM Create New](/img/kvm_create.png)
-
----
+{{< bootstrap/figure src="/img/kvm_create.png" caption="Create new VM" extra_figcaption_class="text-center" >}}
 
 Creating the VM is a fairly straight-forward five step process:
 
@@ -381,7 +379,7 @@ echo "<?php phpinfo(); ?>" | sudo tee /var/www/html/test.php
 Navigate to http://cloud1.example.vm/test.php in your KVM host's web
 browser. You should see something like:
 
-![image: PHP Info](/img/php_info.png)
+{{< bootstrap/figure src="/img/php_info.png" caption="phpinfo()" extra_figcaption_class="text-center" >}}
 
 You don't need the file anymore so remove it.
 
@@ -484,7 +482,7 @@ https://cloud1.example.vm/nextcloud
 Since your SSL certificate is not signed by a certificate authority your
 browser should tell you something like:
 
-![image: Firefox not secure](/img/firefox_notsecure.png)
+{{< bootstrap/figure src="/img/firefox_notsecure.png" caption="Firefox insecure connection warning" extra_figcaption_class="text-center" >}}
 
 ---
 
@@ -497,7 +495,7 @@ and click `Log in`.
 
 If you see this final picture you've succeeded!
 
-![image: Nextcloud successful install](/img/nextcloud_success.png)
+{{< bootstrap/figure src="/img/nextcloud_success.png" caption="Nextcloud successfull install screen" extra_figcaption_class="text-center" >}}
 
 ---
 

@@ -1,12 +1,12 @@
----
-title: Create a Household Wiki using Vimwiki
-date: 2016-12-09T19:38:00-05:00
-tags: [Vim, Vimwiki]
-slug: create-householdwiki-vimwiki
-summary: |
-    Step by step instructions for initial set-up of for household wiki
-    using Vimwiki
----
++++
+title = "Create a Household Wiki using Vimwiki"
+date = "2016-12-09T19:38:00-05:00"
+tags = ["Vim", "Vimwiki"]
+slug = "create-householdwiki-vimwiki"
+summary = """
+I write about my usage of a fun Vim package for a household wiki which can be synced across multiple devices via a self or vendor hosted file sharing app such as Nextcloud or Dropbox.
+"""
++++
 
 ## Background
 
@@ -149,7 +149,7 @@ Finally, enter `:wq` to save both file and quit.
 
 ### Vimwiki Demo
 
-![Vimwiki link gif](/img/vimwiki_link.gif)
+{{< bootstrap/figure src="/img/vimwiki_link.gif" caption="Setting up your table of contents in Vimwiki" extra_figcaption_class="text-center" >}}
 
 ## Next Steps
 

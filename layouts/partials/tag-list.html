@@ -1,0 +1,9 @@
+<ul class="tag-list">
+  {{ range .Params.tags }}
+    <li class="tag-list-item">
+      <a href="{{ path.Join "tags" ( . | urlize ) | absURL }}">
+        #{{ . | urlize }}
+      </a>
+    </li>
+  {{ end }}
+</ul>

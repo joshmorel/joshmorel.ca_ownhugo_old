@@ -1,0 +1,24 @@
+<header>
+  <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <div class="flex-grow-1">
+        <a class="navbar-brand flex-grow-1" href="/">{{ .Site.Params.brand }}</a>
+      </div>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-expanded="false" aria-lable="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse flex-grow-0" id="navbarCollapse">
+        <ul class="navbar-nav">
+          {{ $currentPage := . }}
+          {{ range .Site.Menus.main }}
+          <li class="nav-item pl-lg-4 pr-lg-4">
+            <a class="nav-link {{ if or (eq $currentPage.RelPermalink .URL) ($currentPage.HasMenuCurrent "main" .) }}active{{ end}}" href="{{ .URL }}" >
+              {{ .Name }}
+            </a>
+          </li>
+          {{ end }}
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>

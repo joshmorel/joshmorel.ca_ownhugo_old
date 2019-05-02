@@ -1,12 +1,12 @@
----
-title: Migrate Static Site from GitHub Pages to S3 and CloudFlare
-date: 2017-05-17T19:44:00-05:00
-tags: [Blogging, Pelican, Jekyll, S3, Cloudflare]
-slug: migrate-github-page-s3-cloudflare
-summary: |
-    Step by step instructions to migrate static site from github page to
-    s3 and cloudflare
----
++++
+title = "Migrate Static Site from GitHub Pages to S3 and CloudFlare"
+date = "2017-05-17T19:44:00-05:00"
+tags = ["Blogging", "Pelican", "Jekyll", "S3", "Cloudflare"]
+slug = "migrate-github-page-s3-cloudflare"
+summary = """
+Hosting a static site on GitHub pages (in 2017 at least) with a generator other than Jekyll was awkward and HTTPS was not an option. An alternate is deploying to object storage with distribution via CDN. This post provides step-by-step instructions for migrating a GitHub page to S3 and CloudFlare.
+"""
++++
 
 ## Background
 
@@ -57,15 +57,11 @@ To achieve a similar affect, click the `Create Bucket` (1), enter your
 domain for `Bucket name` (2), and click `Next` through the rest of
 the screens.
 
-![image: Create S3 Bucket](/img/s3-create-bucket.png)
-
----`
+{{< bootstrap/figure src="/img/s3-create-bucket.png" caption="Create S3 bucket" extra_figcaption_class="text-center" >}}
 
 Click on the bucket, then navigate to `Permissions` (1) > `Bucket Policy` (2) and paste the following text into the `Bucket policy editor`, substituting with your actual domain (3). This essentially allows any browser to GET any object in the bucket (which is what we want). Be sure to click `Save` (4).
 
-![image: Set S3 Bucket Policy](/img/s3-bucket-policy.png)
-
----
+{{< bootstrap/figure src="/img/s3-bucket-policy.png" caption="Set S3 bucket policy" extra_figcaption_class="text-center" >}}
 
 ```json
 {
@@ -82,8 +78,6 @@ Click on the bucket, then navigate to `Permissions` (1) > `Bucket Policy` (2) an
 }
 ```
 
----
-
 To enable static hosting for this bucket, go to **Properties** (1),
 click **Static website hosting** (2), select the **Use this bucket to
 host a website** option (3), enter `index.html` and `404.html` for
@@ -91,7 +85,7 @@ host a website** option (3), enter `index.html` and `404.html` for
 click **Save** (5). Note that you will need to use a 404.html template
 to serve a custom 404 page, which I won't cover in this article.
 
-![image: Enable S3 Static site hosting](%7Bfilename%7D/images/s3-static-hosting.png)
+{{< bootstrap/figure src="/img/s3-static-hosting.png" caption="Enable S3 static site hosting" extra_figcaption_class="text-center" >}}
 
 ### Redirect Bucket
 
@@ -124,23 +118,17 @@ Log on to the AWS console navigate to the IAM service. You can also add
 required credentials to an existing user, but assuming you don't have
 one, click `Users` (1) then `Add user` (2).
 
-![image: Create AWS user](/img/s3-iam-create-user.png)
-
----
+{{< bootstrap/figure src="/img/s3-iam-create-user.png" caption="Create AWS user" extra_figcaption_class="text-center" >}}
 
 Enter a meaningful name (1) and check off `Programmatic access` (2)
 then click `Next: Permissions` (3).
 
-![image: Set AWS user details](/img/s3-iam-set-user-details.png)
-
----
+{{< bootstrap/figure src="/img/s3-iam-set-user-details.png" caption="Set AWS user details" extra_figcaption_class="text-center" >}}
 
 Click `Attach existing policies directly` (1), filter on "S3 (2), then
 check `AmazonS3FullAccess` (3), then scroll down and click `Next: Review`. On the final screen click `Create user`.
 
-![image: Set AWS user S3 permissions](/img/s3-iam-set-user-permissions.png)
-
----
+{{< bootstrap/figure src="/img/s3-iam-set-user-permissions.png" caption="Set AWS user S3 permissions" extra_figcaption_class="text-center" >}}
 
 After successful creation, download the .csv file or copy the `Access key ID` and `Secret access key`. Either way, it is important to keep
 these secret. These credentials can allow any agent to create and use
@@ -205,9 +193,7 @@ Using your own registered domain, click `+ Add Site` (1), enter the
 domain (2) and click `Begin Scan` (3). If the domain is registered,
 you should see the domain listed.
 
-![image: Add Site to CloudFlare](/img/cloudflare-add-site.png)
-
----
+{{< bootstrap/figure src="/img/cloudflare-add-site.png" caption="Add site to CloudFlare" extra_figcaption_class="text-center" >}}
 
 Delete any other records (for example, the `A` record) then create a
 `CNAME` record for each bucket. If you're following along, that's one
@@ -218,9 +204,7 @@ Be sure to use your domain/bucket as well as the region your AWS service
 is located in instead of `ca-central-1`. You also must exclude the
 `http` prefix (3) or any trailing slash (4). Then click `Continue`.
 
-![image: Setting CloudFlare DNS Records](/img/cloudflare-set-dns-records.png)
-
----
+{{< bootstrap/figure src="/img/cloudflare-set-dns-records.png" caption="Set CloudFlare DNS records" extra_figcaption_class="text-center" >}}
 
 Select the `Free Plan` then click `Continue` to arrive at the DNS
 nameserver section. Note the DNS nameservers then click `Continue`
@@ -253,18 +237,14 @@ First click on `Crypto` (1) then change `SSL` (2) to `Flexible`. We
 want to _accept_ both HTTP and HTTPS traffic, we're just going to
 _redirect_ HTTP to HTTPS.
 
-![image: Change CloudFlare SSL to Flexible](/img/cloudflare-flexible-ssl.png)
-
----
+{{< bootstrap/figure src="/img/cloudflare-flexible-ssl.png" caption="Change CloudFlare SSL to flexible" extra_figcaption_class="text-center" >}}
 
 Next click on `Page Rules` (1), then `Create Page Rule` (2). Enter a
 wildcard value for URL matching (3), select `Always Use HTTPS` (4)
 from the drop-down then `Save and Deploy` (5). Now when you enter
 `http://yourdomain.com` you should be redirected.
 
-![image: Set CloudFlare Page Rule to use HTTPS](/img/cloudflare-always-use-https.png)
-
----
+{{< bootstrap/figure src="/img/cloudflare-always-use-https.png" caption="Set CloudFlare page rule to use HTTPS" extra_figcaption_class="text-center" >}}
 
 ### Redirect from GitHub Pages with Jekyll
 

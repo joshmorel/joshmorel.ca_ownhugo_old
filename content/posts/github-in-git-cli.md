@@ -1,10 +1,12 @@
----
-title: GitHub from the CLI with Hub
-date: 2017-08-04T07:41:00-05:00
-tags: [Git, GitHub]
-slug: github-from-cli-hub
-summary: Use git+hub for GitHub usage via the command line interface
----
++++
+title = "GitHub from the CLI with Hub"
+date = "2017-08-04T07:41:00-05:00"
+tags = ["Git", "GitHub"]
+slug = "github-from-cli-hub"
+summary = """
+The obvious go-to for GitHub is the user-friendly web interface. A command-line alternate exists however for those included called hub. This post provides instructions on how to use for making and merging a pull request.
+"""
++++
 
 ## Background
 

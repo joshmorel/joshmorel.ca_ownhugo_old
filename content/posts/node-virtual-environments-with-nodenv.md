@@ -1,10 +1,12 @@
----
-title: Node Virtual Environments with nodenv
-date: 2017-03-04T18:38:00-05:00
-tags: ["Node.js", nodenv]
-slug: [node-virtual-environments-with-nodenv]
-summary: Using nodenv for Node.js virtual environments in Ubuntu
----
++++
+title = "Node Virtual Environments with nodenv"
+date = "2017-03-04T18:38:00-05:00"
+tags = ["Node.js", "nodenv"]
+slug = "node-virtual-environments-with-nodenv"
+summary = """ Using nodenv for Node.js virtual environments in Ubuntu
+I use nodenv for Node.js version and virtual environment management. In this post I briefly compare considered alternates and provide instructions on how to set nodenv up.
+"""
++++
 
 ## Background
 

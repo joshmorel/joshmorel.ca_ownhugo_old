@@ -1,0 +1,17 @@
+{{/* vi: set ft=gohtmltmpl: */}}
+
+<figure class="figure">
+  {{ with .Get "link" }}<a href="{{.}}">{{ end }}
+  <img
+    src="{{ .Get "src" }}"
+    class="figure-img img-fluid{{ with .Get "extra_img_class" }} {{.}}{{ end }}"
+    {{ if or (.Get "alt") (.Get "caption") }}alt="{{ with .Get "alt"}}{{.}}{{else}}{{ .Get "caption" }}{{ end }}"{{ end }}
+  >
+  {{ if .Get "link" }}</a>{{ end }}
+  {{ if .Get "caption" }}
+  <figcaption
+    class="figure-caption{{ if isset .Params "extra_figcaption_class" }} {{ .Get "extra_figcaption_class" }}{{ end }}">
+    {{ .Get "caption" }} 
+  </figcaption>
+  {{ end }}
+</figure>

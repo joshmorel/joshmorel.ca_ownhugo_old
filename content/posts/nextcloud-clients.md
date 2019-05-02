@@ -1,13 +1,13 @@
----
-title: Sync-n-Share Nextcloud Sandbox with Desktop Clients
-date: 2017-01-15T8:15:00-05:00
-lastmod: 2017-04-02T15:41:00-05:00
-tags: [Nextcloud, Ubuntu, iptables]
-slug: nextcloud-clients
-summary: |
-    Step-by-step instructions to for sync & share files across multiple
-    devices with a Nextcloud sandbox
----
++++
+title = "Sync-n-Share Nextcloud Sandbox with Desktop Clients"
+date = "2017-01-15T8:15:00-05:00"
+lastmod = "2017-04-02T15:41:00-05:00"
+tags = ["Nextcloud", "Ubuntu", "iptables"]
+slug = "nextcloud-clients"
+summary = """
+My continuation of the previous article on setting up a Nextcloud 11 sandbox. I detail how to install and set-up a client for syncing and sharing files across multiple devices.
+"""
++++
 
 **Update:** I've updated the titles for the first two articles in my
 Nextcloud series to explicitly identify the target environment being a "sandbox". The purpose of the sandbox is to develop comfort with
@@ -124,9 +124,7 @@ Click on `nextadmin` in the top-right corner and select `Users`. The
 first line on the `Users` page allows you to create a new user very
 easily:
 
-![image: Nextcloud create user](/img/nextcloud_create_user.png)
-
----
+{{< bootstrap/figure src="/img/nextcloud_create_user.png" caption="Create normal Nextcloud user" extra_figcaption_class="text-center" >}}
 
 Let's create a user called `cloudboy` and give him a password. You can
 also create groups but we won't bother with that now.
@@ -144,9 +142,7 @@ Click `Windows`. This will download the executable. When the download is
 done complete the install with all the default options selected. A
 successful install should end with the launch of a `Nextcloud Connection Wizard`:
 
-![image: Nextcloud connection wizard address](/img/nextcloud_wizard_address.png)
-
----
+{{< bootstrap/figure src="/img/connection_wizard_address.png" caption="Nextcloud client connection wizard" extra_figcaption_class="text-center" >}}
 
 Enter the URL: `https://cloud1.example.vm/nextcloud`
 
@@ -157,9 +153,7 @@ The installer will ask you what to sync. You can keep or change the
 defaults. Once this is done, the files should be downloaded in the local
 folder.
 
-![image: Nextcloud connection wizard sync options](/img/nextcloud_wizard_sync.png)
-
----
+{{< bootstrap/figure src="/img/nextcloud_wizard_sync.png" caption="Nextcloud client sync options" extra_img_class="w-50" >}}
 
 Try adding files through both the web interface and local filesystem and
 see the results. It should all be very intuitive!
@@ -185,17 +179,13 @@ sudo apt install owncloud-client
 On next reboot, the client will run automatically. Until then, you can
 run `owncloud` from the console or find the client in the start menu:
 
-![image: Owncloud in start menu](/img/owncloud_start.png)
-
----
+{{< bootstrap/figure src="/img/owncloud_start.png" caption="Owncloud in start menu" extra_img_class="w-50" >}}
 
 You will be presented with the `ownCloud Connection Wizard`. Not
 surprisingly, the steps are much the same as the Nextcloud Windows
 client:
 
-![image: Nextcloud connection wizard address](/img/owncloud_wizard_address.png)
-
----
+{{< bootstrap/figure src="/img/owncloud_wizard_address.png" caption="Client connection wizard address" extra_figcaption_class="text-center" >}}
 
 1. Enter the URL - `https://cloud1.example.vm/nextcloud`
 2. Accept the untrusted certificate

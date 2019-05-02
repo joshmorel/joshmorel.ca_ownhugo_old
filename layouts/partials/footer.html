@@ -1,0 +1,12 @@
+<footer>
+  <ul>
+    {{ range .Site.Menus.icon }}
+    <li>
+      <a href="{{ .URL }}" target="_blank" rel="noopener" aria-label="{{ .Title }}" title="{{ .Title }}">
+        <i class="{{ .Name }}"></i>
+      </a>
+    </li>
+    {{ end }}
+  </ul>
+  <p>Copywrite &copy; 2019 {{ .Site.Params.author }}. Powered by <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</p>
+</footer>

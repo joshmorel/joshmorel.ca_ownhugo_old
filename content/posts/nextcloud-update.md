@@ -1,11 +1,13 @@
----
-title: Update Nextcloud
-date: 2017-04-14T12:38:00-05:00
-moddate: 2018-01-27T05:49:00-05:00
-tags: [Nextcloud]
-slug: nextcloud-update
-summary: How to update Nextcloud and restore if needed
----
++++
+title = "Update Nextcloud"
+date = "2017-04-14T12:38:00-05:00"
+lastmod = "2018-01-27T05:49:00-05:00"
+tags = ["Nextcloud"]
+slug = "nextcloud-update"
+summary = """
+In this post I details steps for a manual update from Nextcloud major versions 11 to 12, something that is much simpler starting with version 12 or using a Snap package.
+"""
++++
 
 **Update:** Since writing this I've learned that future major version upgrades (e.g. 12->13) will be a lot simpler so most of these instructions have lost their relevance. Even so, doing [your own backup]({{< ref "#pre-update" >}}) rior to upgrading is worthwhile insurance IMHO.
 
@@ -83,7 +85,7 @@ Then log-in to the Nextcloud web interface as admin and navigate to the
 Admin page. In this case you will see that I'm not on the latest version
 and can update here.
 
-![image: Nextcloud Update Version Page](/img/nextcloud_update_version_page.png)
+{{< bootstrap/figure src="/img/nextcloud_update_version_page.png" caption="Nextcloud update version page" >}}
 
 ---
 
