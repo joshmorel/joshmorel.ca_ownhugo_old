@@ -60,9 +60,3 @@ sectionPagesMenu = "main"
     name = "fab fa-stack-overflow"
     title = "StackOverflow"
     weight = 4
-
-  [[menu.icon]]
-    url = "https://twitter.com/kitchener25"
-    name = "fab fa-twitter"
-    title = "Twitter"
-    weight = 5
